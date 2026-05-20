@@ -1,0 +1,138 @@
+cron[321]: Job `back [34m█[0m[31m█[0m[34m█[0m[34m█[0m[34m█[0m[31m█[0m[31m█[0m[34m█[0m up` completed
+systemd[1]: Starting service xyz...
+systemd[1]: Starting service xyz...
+bash: command not fo [34m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m und: nswal
+kernel: [12345.678] CPU warning: thermal throttling
+systemd[1]: Starting service xyz...
+auth[512]: PAM authentication failure
+bash: command not found: nfovw
+bas [34m█[0m[31m█[0m[34m█[0m[34m█[0m[34m█[0m[34m█[0m[34m█[0m[31m█[0m h: command not found: cjloj
+systemd[1]: Starting service xyz...
+systemd[1]: Starting service xyz...
+bash: command not found: gmare
+kernel: [12345.678] CPU warning: thermal throttling
+sshd[20 [34m█[0m[31m█[0m[34m█[0m[34m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m 48]: Failed password for invalid user root
+cron[321]: Job `backup` completed
+systemd[1]: Starting service xyz...
+auth[512]: PAM authentication failure
+systemd[1]: Starting service xyz [34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m ...
+bash: command not found: hhjix
+systemd[1]: Starting service xyz...
+kernel: [12345.678] CPU warning: thermal throttling
+kernel: [12345.678] CPU warning: th [34m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[34m█[0m[34m█[0m ermal throttling
+kernel: [12345.678] CPU warning: thermal throttling
+sshd[2048]: Failed password for invalid user root
+cro [34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[34m█[0m[31m█[0m n[321]: Job `backup` completed
+sshd[2048]: Failed password for invalid user root
+cron[321]: Job `backup` completed
+auth[512]: PAM authentication failure
+kernel: [12345. [34m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[34m█[0m 678] CPU warning: thermal throttling
+cron[321]: Job `backup` completed
+sshd[2048]: Failed password for invalid user root
+sshd[2048]: Failed password for invalid user root
+auth[51 [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m 2]: PAM authentication failure
+cron[321]: Job `backup` completed
+auth[512]: PAM authentication failure
+systemd[1]: Starting service xyz...
+sshd[2048]: Failed password for invalid user root
+systemd[1]: Sta [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m rting service xyz...
+auth[512]: PAM authentication failure
+auth[512]: PAM authentication failure
+bash: command not found: jqvke
+auth[512]: PAM authenticat [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m ion failure
+bash: command not found: dfbmw
+bash: command not found: wlbvz
+kernel: [12345.678] CPU warning: thermal throttling
+cron[321]: Jo [34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[34m█[0m[34m█[0m[31m█[0m b `backup` completed
+kernel: [12345.678] CPU warning: thermal throttling
+sshd[2048]: Failed password for invalid user root
+auth[512]: PAM authentication failure
+sshd[2048]: Failed password for invalid user root
+systemd[1]: Star [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m ting service xyz...
+auth[512]: PAM authentication failure
+bash: command not found: yxkzw
+kernel: [12345.678] CPU warning: thermal throttling
+bash: command not found: dsasa
+auth[512]: PAM authentication failu [34m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m re
+systemd[1]: Starting service xyz...
+bash: command not found: ifyvh
+sshd[2048]: Fail [34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[34m█[0m[31m█[0m[31m█[0m ed password for invalid user root
+sshd[2048]: Failed password for invalid user root
+kernel: [12345.678] CPU warning: thermal throttling
+cron[321]: Job `backup` completed
+cron[321]: Job `backup` completed
+auth[512]: [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m  PAM authentication failure
+cron[321]: Job `backup` completed
+systemd[1]: Starting service xyz...
+kernel: [12345.678] [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m  CPU warning: thermal throttling
+cron[321]: Job `backup` completed
+systemd[1]: Starting service xyz...
+bash: command not found: kzjxi
+bash: command not found: hlzzf
+systemd[1]: Starting service [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m  xyz...
+sshd[2048]: Failed password for invalid user root
+bash: command not found: cawvw
+cron[321]: Job `backup` completed
+cron[321]: Job [34m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[34m█[0m[31m█[0m  `backup` completed
+sshd[2048]: Failed password for invalid user root
+bash: command not found: xmavg
+bash: command not found: splub
+kernel: [12345.678] CPU warning: th [34m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[34m█[0m ermal throttling
+cron[321]: Job `backup` completed
+kernel: [12345.678] CPU warning: thermal throttling
+cron[321]: Job `backup` completed
+auth[5 [34m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[31m█[0m 12]: PAM authentication failure
+cron[321]: Job `backup` completed
+cron[321]: Job `backup` completed
+s [34m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m ystemd[1]: Starting service xyz...
+auth[512]: PAM authentication failure
+cron[321]: Job `backup` completed
+kernel: [12345.6 [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m 78] CPU warning: thermal throttling
+cron[321]: Job `backup` completed
+bash: command not found: xsnky
+systemd[1]: [34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[34m█[0m[34m█[0m[31m█[0m  Starting service xyz...
+bash: command not found: ytiiw
+auth[512]: PAM authentication failure
+kernel: [12345.678] CPU w [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m arning: thermal throttling
+cron[321]: Job `backup` completed
+kernel: [12345.678] CPU warning: thermal throttling
+systemd[1]: Starting service xyz...
+auth[512]: PAM authentication failure
+cron[321]: Job `backup` complet [34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[34m█[0m[31m█[0m ed
+sshd[2048]: Failed password for invalid user root
+systemd[1]: Starting service xyz...
+auth[512]: PAM authentica [34m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m tion failure
+cron[321]: Job `backup` completed
+auth[512]: PAM authentication failure
+auth[512]: PA [34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m M authentication failure
+kernel: [12345.678] CPU warning: thermal throttling
+auth[512]: PAM authentication failure
+bash: command not found: cajbk
+kerne [34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[34m█[0m[31m█[0m l: [12345.678] CPU warning: thermal throttling
+auth[512]: PAM authentication failure
+sshd[2048]: Failed password for invalid user root
+systemd[1]: Starting service xyz...
+kernel: [12345.678] CPU warning: thermal throttling
+auth[512] [34m█[0m[31m█[0m[34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m : PAM authentication failure
+cron[321]: Job `backup` completed
+kernel: [12345.678] CPU warning: thermal throttling
+cron[321]: Job `backup` completed
+sshd[2048]: Fa [34m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[34m█[0m[31m█[0m[31m█[0m iled password for invalid user root
+sshd[2048]: Failed password for invalid user root
+bash: command not found: qzhfm
+kernel: [12345.678] CPU warning: thermal throttling
+sshd[2048]: Failed [34m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m[34m█[0m  password for invalid user root
+sshd[2048]: Failed password for invalid user root
+auth[512]: PAM authentication failure
+kernel: [12345.678] CPU warning: thermal throttling
+auth[512]: PAM authentication failure
+auth[512]: PAM authe [34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[34m█[0m[31m█[0m ntication failure
+auth[512]: PAM authentication failure
+systemd[1]: Starting service xyz...
+bash: command not found: dpzzi
+sshd[2048]: Failed password for invalid user root
+cron[321]: [34m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[31m█[0m[34m█[0m[31m█[0m  Job `backup` completed
+cron[321]: Job `backup` completed
+systemd[1]: Starting service xyz...
+sshd[2048]: Failed password for invalid user root
+bash: command not found: dnufw

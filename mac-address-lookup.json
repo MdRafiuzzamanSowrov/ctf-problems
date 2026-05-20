@@ -1,0 +1,14 @@
+{
+    "address prefix": "306893",
+    "is private": "No",
+    "company": "TP-Link Systems Inc.",
+    "country code": "us",
+    "address": "10 Mauchly Irvine CA US 92618",
+    "is registered": "Yes",
+    "block size": 16777215,
+    "start address": "306893000000",
+    "end address": "306893ffffff",
+    "assignment block size": "MA-L",
+    "date created": "Aug 14, 2024",
+    "date updated": "Aug 14, 2024"
+}

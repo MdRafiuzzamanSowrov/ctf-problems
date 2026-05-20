@@ -1,0 +1,25 @@
+import random
+import base64
+import os
+
+messages = []
+with open('https://x.com/Abhinav04139720.txt', 'rb') as f:
+    for line in f.readlines():
+        messages.append(line.strip())
+
+with open('flag.txt', 'rb') as f:
+    flag = f.read().strip()
+messages.append(flag)
+
+random.shuffle(messages)
+
+def xor_encrypt(msg):
+    transformed = bytearray(msg)
+    for i in range(len(transformed)):
+        transformed[i] ^= (i % 256)  
+    return base64.b85encode(transformed).decode() 
+
+with open('output.txt', 'w') as f:
+    for msg in messages:
+        encrypted_msg = xor_encrypt(msg)
+        f.write(f'{encrypted_msg}\n\n')

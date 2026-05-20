@@ -1,0 +1,17 @@
+# Ignore private keys and certificates
+*.id_rsa
+*.pem
+*.hexlic
+*.csr
+
+# Ignore personal documents and spreadsheets
+*ID card*
+*.PDF
+*.pdf
+*attendance*
+*.csv
+*.xlsx
+
+# Ignore OS/environment specific files
+.DS_Store
+.idea/

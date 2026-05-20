@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<ioc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f527691b-dd1f-4398-804f-5bc262baf456" last-modified="2020-01-29T02:07:07" xmlns="http://schemas.mandiant.com/2010/ioc">
+  <short_description>I2TH Hunting Activity IOCs</short_description>
+  <description>Hey! :)</description>
+  <authored_by>Joshua Beaman / Known Divide</authored_by>
+  <authored_date>2020-01-29T01:21:07</authored_date>
+  <links />
+  <definition>
+    <Indicator operator="OR" id="4a2eeb23-4f0a-4e99-9448-d11ce1f06d74">
+      <IndicatorItem id="0b38e953-aa7b-4dd4-ba54-5c5005bcbaa5" condition="contains">
+        <Context document="FileItem" search="FileItem/FileName" type="mir" />
+        <Content type="string">Timesheet_Week_Commencing_1st_January.xls</Content>
+      </IndicatorItem>
+      <IndicatorItem id="9d9b4217-0e8c-4459-bdf6-9fa85ffa1dd6" condition="is">
+        <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+        <Content type="md5">09fb5ed918fd28c732fc9a70ef2b49be</Content>
+      </IndicatorItem>
+      <IndicatorItem id="be42cf5f-62d3-4917-a75a-3daea15c5573" condition="is">
+        <Context document="FileItem" search="FileItem/SizeInBytes" type="mir" />
+        <Content type="int">1366</Content>
+      </IndicatorItem>
+      <IndicatorItem id="e6c0bfed-0031-4683-a38d-be82fb348841" condition="contains">
+        <Context document="FileItem" search="FileItem/FileName" type="mir" />
+        <Content type="string">k3yl0gg3rv2.exe</Content>
+      </IndicatorItem>
+      <IndicatorItem id="100faa96-65e9-4da3-8683-9b1e105238f0" condition="is">
+        <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+        <Content type="md5">ce5e1b1e7a22526c638eaf06fd3a7911</Content>
+      </IndicatorItem>
+      <IndicatorItem id="404ea877-78db-4c0c-b3a1-1d177ea5f1cd" condition="is">
+        <Context document="FileItem" search="FileItem/SizeInBytes" type="mir" />
+        <Content type="int">81</Content>
+      </IndicatorItem>
+      <IndicatorItem id="30b67af0-c21b-4ac1-b4ef-eec9bf254399" condition="contains">
+        <Context document="FileItem" search="FileItem/FileName" type="mir" />
+        <Content type="string">young-golden-retriever-1404848-639x424.jpg</Content>
+      </IndicatorItem>
+      <IndicatorItem id="c9a5e596-4aee-4469-8028-f12e11e6ec4c" condition="is">
+        <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+        <Content type="md5">9b90f3c54ae3ca19c0fddeeed2b00947</Content>
+      </IndicatorItem>
+      <IndicatorItem id="33f8e4b0-765c-490e-98d7-f423cc9f8ae7" condition="is">
+        <Context document="FileItem" search="FileItem/SizeInBytes" type="mir" />
+        <Content type="int">144557</Content>
+      </IndicatorItem>
+      <IndicatorItem id="ba6f9736-9613-418f-b6d0-f104b2c405b4" condition="contains">
+        <Context document="FileItem" search="FileItem/StringList/string" type="mir" />
+        <Content type="string">H3XGROUP</Content>
+      </IndicatorItem>
+    </Indicator>
+  </definition>
+</ioc>

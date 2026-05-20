@@ -1,0 +1,17 @@
+{
+    "range_start": "000000",
+    "range_end": "ffffff",
+    "block": "l",
+    "oui": "306893",
+    "history": [
+        {
+            "org_name": "TP-Link Systems Inc.",
+            "is_private": false,
+            "org_address": "10 Mauchly Irvine CA US 92618",
+            "action_date": "2024-08-14",
+            "action_type": "add",
+            "src": "ieee-oui.csv",
+            "country": "us"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+-- Create database
+CREATE DATABASE IF NOT EXISTS SchoolDB;
+USE SchoolDB;
+
+-- Create table
+CREATE TABLE IF NOT EXISTS STUDENTS (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    grade CHAR(1),
+    marks INT,
+    attendance INT
+);
+
+-- Insert sample data
+INSERT INTO STUDENTS (student_id, name, age, grade, marks, attendance) VALUES
+(1, 'Alice', 15, 'A', 85, 90),
+(2, 'Bob', 16, 'B', 72, 80),
+(3, 'Charlie', 15, 'C', 60, 70),
+(4, 'David', 17, 'A', 90, 95),
+(5, 'Eva', 16, 'B', 75, 85),
+(6, 'Frank', 15, 'C', 55, 60),
+(7, 'Grace', 16, 'A', 88, 92),
+(8, 'Hannah', 17, 'B', 78, 87),
+(9, 'Ian', 15, 'C', 50, 65),
+(10, 'Jack', 16, 'A', 95, 98);

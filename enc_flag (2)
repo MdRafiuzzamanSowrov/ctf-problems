@@ -1,0 +1,78 @@
+
+A Union injection is a type of SQL injection attack that exploits vulnerabilities in web applications to retrieve data from a database. In this case, the goal is to use a Union injection to retrieve the result of the user() function from the database.
+
+The image provided shows a URL that already seems to be attempting a UNION injection:
+
+http://83.136.253.201:37897/search.php?port_code=cn%27+UNION+select+1%2C%2B2%C2%A0%2Bversion%2C%2B3%2C%2B4+--+
+
+Let's break down this URL and modify it to retrieve user():
+
+http://83.136.253.201:37897/search.php?port_code= : This is the base URL and the vulnerable parameter.
+cn%27 : This closes the initial single quote that likely surrounds the port_code parameter in the SQL query.
+UNION+select+1%2C%2B2%C2%A0%2Bversion%2C%2B3%2C%2B4+--+ : This is the core of the UNION injection.
+UNION SELECT: This combines the result of the original query with the result of our injected query.
+1%2C%2B2%C2%A0%2Bversion%2C%2B3%2C%2B4 : These are the columns we are selecting. The version function is already being attempted in the original URL.
+The numbers (1, 2, 3, 4) are placeholders to match the number of columns in the original query.
+%2C is the URL-encoded comma ,.
+%2B is the URL-encoded plus +.
+%C2%A0 is the URL-encoded non-breaking space.
+--+ : This is a comment tag in SQL (equivalent to # or /* */) which comments out the rest of the original query, preventing syntax errors.
+To get the result of user(), we need to replace one of the placeholder columns with user(). Assuming the output is displayed in the "Port Code", "Port City", or "Port Volume" columns, we would insert user() into the corresponding position.
+
+Let's try to inject user() into the second column, which currently attempts to display version():
+
+The modified URL would be:
+
+http://83.136.253.201:37897/search.php?port_code=cn%27+UNION+select+1%2C+user()%2C+3%2C+4+--+
+
+In this URL:
+
+user() replaces version.
+After navigating to this URL, the value returned by the user() function from the database should be displayed in the corresponding column on the webpage (most likely where version() was intended to be displayed previously).
+
+
+
+
+
+
+
+http://83.136.253.201:37897/search.php?port_code=cn%27+UNION+select+1%2C+user()%2C+3%2C+4+--+
+
+
+
+
+
+eita kibhabe user ber kore, banglay explain koro
+
+
+
+উপরের URL (http://83.136.253.201:37897/search.php?port_code=cn%27+UNION+select+1%2C+user()%2C+3%2C+4+--+) ব্যবহার করে কিভাবে user() এর ফলাফল বের করা হয়েছে, তা বাংলায় নিচে ব্যাখ্যা করা হলো:
+
+এটি একটি SQL Injection আক্রমণ পদ্ধতি, যাকে "UNION based SQL Injection" বলা হয়। এই পদ্ধতিতে একটি ওয়েবসাইটের দুর্বলতা কাজে লাগিয়ে ডাটাবেস থেকে তথ্য বের করা হয়।
+
+URL-এর অংশগুলো ভেঙে ব্যাখ্যা:
+
+http://83.136.253.201:37897/search.php?port_code= : এটি ওয়েবসাইটের মূল ঠিকানা এবং port_code হলো সেই প্যারামিটার যেখানে ইনপুট নেওয়া হচ্ছে এবং যেখানে দুর্বলতা রয়েছে। সাধারণত, ওয়েব অ্যাপ্লিকেশন এই ইনপুটকে ডাটাবেসে একটি SQL কোয়েরির (অনুসন্ধান কমান্ড) অংশ হিসেবে ব্যবহার করে।
+
+cn%27 : এখানে cn একটি সাধারণ ইনপুট। এর পরে %27 আছে, যা URL-এনকোডেড ' (single quote) এর সমান। যদি ওয়েব অ্যাপ্লিকেশনটি port_code এর মানকে একটি SQL কোয়েরির মধ্যে সিঙ্গেল কোট দিয়ে আবদ্ধ করে, যেমন: SELECT * FROM ports WHERE port_code = 'ইউজার ইনপুট', তাহলে এই %27 সেই সিঙ্গেল কোটটিকে বন্ধ করে দেয়।
+
++UNION+select+1%2C+user()%2C+3%2C+4+--+ : এটিই হলো মূল ইনজেকশন পে লোড।
+
+UNION SELECT: SQL-এ UNION অপারেটর দুটি বা তার বেশি SELECT স্টেটমেন্টের ফলাফলকে একত্রিত করে একটি একক ফলাফল সেট তৈরি করে। অর্থাৎ, মূল কোয়েরি যা ফলাফল দিচ্ছে তার সাথে আমাদের ইনজেক্ট করা SELECT কোয়েরির ফলাফলও যোগ করা হবে।
+1%2C+user()%2C+3%2C+4: এটি আমাদের ইনজেক্ট করা SELECT কোয়েরির অংশ।
+এখানে 1, 3, 4 হলো প্লেসহোল্ডার কলাম। UNION অপারেটর কাজ করার জন্য, UNION-এর আগে এবং পরে থাকা SELECT স্টেটমেন্টগুলোতে কলামের সংখ্যা সমান হতে হবে। আমরা জানি না মূল কোয়েরিতে কয়টি কলাম আছে, তাই আমরা আন্দাজে কিছু সংখ্যা ব্যবহার করি (বা পর্যায়ক্রমে কলামের সংখ্যা বের করি)। যদি কলামের সংখ্যা ঠিক না হয়, তাহলে এরর আসবে। এই ক্ষেত্রে মনে হচ্ছে ৪টি কলাম আছে।
+user(): এটি একটি SQL ফাংশন যা ডাটাবেসের বর্তমান ব্যবহারকারীর নাম ফিরিয়ে দেয়। আমরা এই ফাংশনটিকে SELECT কলামগুলোর মধ্যে রেখেছি। এর ফলে, যখন কোয়েরিটি চলবে, তখন user() ফাংশনের ফলাফলটি সেই কলামে দেখানো হবে যেখানে সাধারণত version() বা অন্য কিছু দেখানো হয়।
+%2C হলো কমা (,) এর URL-এনকোডেড রূপ।
+%2B হলো প্লাস (+) এর URL-এনকোডেড রূপ।
+--+: এটি SQL-এ একটি কমেন্ট ট্যাগ। এর মানে হলো -- এর পরের যেকোনো কিছুকে ডাটাবেস কোয়েরির অংশ হিসেবে বিবেচনা করবে না। এটি নিশ্চিত করে যে মূল কোয়েরির বাকি অংশ (যদি থাকে) যেন আমাদের ইনজেক্ট করা কোয়েরিতে কোনো সিনট্যাক্স এরর না তৈরি করে।
+কিভাবে কাজ করে?
+
+যখন আপনি এই URL টি ব্রাউজারে লোড করেন, তখন ওয়েব অ্যাপ্লিকেশনটি port_code প্যারামিটারের মান ব্যবহার করে একটি SQL কোয়েরি তৈরি করে। দুর্বলতার কারণে, আপনার ইনপুটটি সরাসরি SQL কোয়েরির অংশ হয়ে যায়।
+
+ধরা যাক, মূল SQL কোয়েরিটি এমন ছিল:
+SELECT Port_Code, Port_City, Port_Volume, Some_Other_Column FROM ports WHERE port_code = 'ইউজার ইনপুট'
+
+আপনার ইনজেকশনের পর, কোয়েরিটি এমন হয়ে যায়:
+SELECT Port_Code, Port_City, Port_Volume, Some_Other_Column FROM ports WHERE port_code = 'cn' UNION SELECT 1, user(), 3, 4 --'
+
+এই পরিবর্তিত কোয়েরিটি ডাটাবেসে পাঠানো হয়। UNION অপারেটরের কারণে, দুটি SELECT স্টেটমেন্টের ফলাফল একত্রিত হয়ে আপনার ব্রাউজারে দেখানো হয়। যেহেতু আপনি user() ফাংশনটি SELECT কলামগুলির মধ্যে রেখেছেন, তাই user() এর ফলাফলটি ওয়েবসাইটের টেবিলের একটি কলামে (যেমন "Port City" বা "Port Volume" কলামের নিচে) প্রদর্শিত হবে। এভাবেই user() এর ফলাফল বের করা সম্ভব হয়।

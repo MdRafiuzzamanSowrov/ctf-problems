@@ -1,0 +1,25 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Mon Mar 30 09:33:39 2026
+Invocation: foremost -i sneaky_sneaker.jpg 
+Output directory: /home/i__am_iron_man/Desktop/CTF prblms/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: sneaky_sneaker.jpg
+Start: Mon Mar 30 09:33:39 2026
+Length: 907 KB (929520 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.jpg 	     132 KB 	          0 	 
+1:	00000265.zip 	     774 KB 	     135997 	 
+Finish: Mon Mar 30 09:33:39 2026
+
+2 FILES EXTRACTED
+	
+jpg:= 1
+zip:= 1
+------------------------------------------------------------------
+
+Foremost finished at Mon Mar 30 09:33:39 2026

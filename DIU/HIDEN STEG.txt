@@ -1,0 +1,206 @@
+# Hidden Frames of Deception - Detailed Writeup
+
+## Challenge Information
+- **Challenge Name:** Hidden Frames of Deception
+- **Category:** Steganography
+- **Points:** 250
+- **Flag Format:** CYBERCON_2025{s0m3_t3xt}
+- **Author:** rick4287
+
+## Challenge Description
+Our intelligence agency has intercepted a suspicious video transmission from a known threat actor. The video appears to be a normal nature documentary, but our cryptanalysis suggests hidden information is embedded within the frames. We believe they're using a sophisticated steganography technique to conceal their communications.
+
+The challenge provides:
+1. A YouTube video link: https://www.youtube.com/watch?v=YLslsZuEaNE
+2. A download link: https://drive.google.com/file/d/1I00ucNqDgeA3EPqcmSchip7VpxvDxp9F/view?usp=sharing
+3. A pseudocode file (`challange.sudo.txt`) describing the encryption algorithm
+
+## Analysis
+
+### Step 1: Understanding the Algorithm
+The pseudocode reveals a multi-stage encryption process:
+
+1. **Extract BGR Mean Values** from the first frame of the video
+   - Read first frame using OpenCV
+   - Calculate mean values for Blue, Green, and Red channels
+   - Convert to bytes (0-255 range)
+
+2. **Derive Encryption Key**
+   - Key = SHA256(MD5(video_bytes))
+   - This creates a 32-byte AES-256 key
+
+3. **Derive Initialization Vector (IV)**
+   - IV = MD5(mean_bgr + key)[:16]
+   - First 16 bytes of the hash
+
+4. **Encryption**
+   - Algorithm: AES-256-CBC
+   - PKCS7 padding applied
+
+### Step 2: Initial Reconnaissance
+First, let's examine the video file:
+
+```bash
+ls -la artifacts/challenge.mp4
+# Output: 31094819 bytes (31 MB)
+```
+
+Using `binwalk` to detect embedded files:
+
+```bash
+binwalk artifacts/challenge.mp4
+```
+
+This reveals:
+- Video data (MP4 format)
+- **PNG image at offset 31094647** (64x64 pixels)
+- Zlib compressed data at 31094769
+
+The PNG at the end is suspicious!
+
+### Step 3: Extracting the PNG
+Extract the embedded PNG:
+
+```bash
+dd if=artifacts/challenge.mp4 of=extracted.png bs=1 skip=31094647
+```
+
+Examine PNG metadata:
+
+```bash
+exiftool extracted.png
+```
+
+**Key finding:** The PNG contains a custom `Steg` field with base64-encoded data:
+```
+Steg: Bp6nStbL/Zb0koAv4PvCSqeJGxaMOuPSV+zFbA6DyTVFCedgh/H6tI25WlX+uQhg
+```
+
+This is our encrypted flag!
+
+### Step 4: Extracting First Frame BGR Values
+Create a Python script to extract BGR means from the first frame:
+
+```python
+import cv2
+
+cap = cv2.VideoCapture('artifacts/challenge.mp4')
+ok, frame = cap.read()
+cap.release()
+
+mean_b = round(frame[:, :, 0].mean()) & 0xFF
+mean_g = round(frame[:, :, 1].mean()) & 0xFF
+mean_r = round(frame[:, :, 2].mean()) & 0xFF
+
+print(f"BGR: {mean_b}, {mean_g}, {mean_r}")
+# Output: BGR: 106, 125, 122
+```
+
+### Step 5: Key Derivation - Critical Discovery
+**Important:** The video file has a PNG appended to it. We need to determine which bytes to use for key derivation.
+
+Let's test both approaches:
+
+**Approach 1:** Using the entire file (including PNG)
+```bash
+md5sum artifacts/challenge.mp4
+# MD5: 859bba6f1aa9bd32949c8f4e8b7bf021
+```
+
+**Approach 2:** Using only the video portion (without PNG)
+```bash
+dd if=artifacts/challenge.mp4 of=video_only.mp4 bs=1 count=31094647
+md5sum video_only.mp4
+# MD5: f7b70fc20db89a2dc0963aa9f4e1b8e3 (different!)
+```
+
+### Step 6: Key and IV Calculation
+Using the video-only bytes:
+
+```python
+import hashlib
+
+with open('video_only.mp4', 'rb') as f:
+    mp4_bytes = f.read()
+
+# Key derivation
+md5_hash = hashlib.md5(mp4_bytes).digest()
+key = hashlib.sha256(md5_hash).digest()
+print(f"Key: {key.hex()}")
+# b19acace35ff5c0d4954de8b58d5571d4a2663fc01a0e9024febed0399d31881
+
+# IV derivation
+mean_bgr = bytes([106, 125, 122])
+iv_input = mean_bgr + key
+iv = hashlib.md5(iv_input).digest()[:16]
+print(f"IV: {iv.hex()}")
+# f40ecfbc901be65da423299ce1f9c427
+```
+
+### Step 7: Decryption
+Now decrypt the base64-encoded data from the PNG:
+
+```python
+import base64
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+
+# Encrypted data from PNG metadata
+encrypted_b64 = "Bp6nStbL/Zb0koAv4PvCSqeJGxaMOuPSV+zFbA6DyTVFCedgh/H6tI25WlX+uQhg"
+ciphertext = base64.b64decode(encrypted_b64)
+
+# Decrypt
+cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+decryptor = cipher.decryptor()
+plaintext = decryptor.update(ciphertext) + decryptor.finalize()
+
+# Remove PKCS7 padding
+pad_len = plaintext[-1]
+flag = plaintext[:-pad_len].decode('utf-8')
+
+print(flag)
+```
+
+**Output:**
+```
+CYBERCON_2025{v1d30_pn8_ta1l_ch41n_us1ng_st3ag}
+```
+
+## Solution Summary
+
+### The Complete Attack Chain:
+1. **File Analysis:** Discovered PNG appended to MP4 using `binwalk`
+2. **Metadata Extraction:** Found encrypted base64 in PNG's tEXt chunk
+3. **Video Processing:** Extracted mean BGR values (106, 125, 122) from first frame
+4. **File Splitting:** Separated video from PNG to get correct hash
+5. **Key Derivation:** SHA256(MD5(video_only_bytes)) → AES key
+6. **IV Derivation:** MD5(BGR_bytes + key)[:16] → IV
+7. **Decryption:** AES-256-CBC with derived key/IV
+8. **Flag Recovery:** Removed PKCS7 padding to reveal flag
+
+### Key Insights:
+- The challenge name "Hidden Frames of Deception" hints at video steganography
+- The critical trick was realizing the PNG appended to the video should NOT be included in the hash calculation
+- The first frame's visual properties (BGR means) become part of the cryptographic key chain
+- Multiple steganographic techniques are chained: file appending + metadata hiding + cryptography
+
+## Tools Used
+- `binwalk` - File analysis and embedded file detection
+- `exiftool` - Metadata extraction
+- `opencv-python` - Video frame processing
+- `cryptography` - AES decryption
+- `dd` - Binary file manipulation
+
+## Flag
+```
+CYBERCON_2025{v1d30_pn8_ta1l_ch41n_us1ng_st3ag}
+```
+
+The flag itself describes the technique: "video PNG tail chain using steganography" - a perfect summary of the multi-layered approach used in this challenge!
+
+## Lessons Learned
+1. Always check for appended/embedded files in media files
+2. Metadata fields can hide encrypted data
+3. Video properties (like frame statistics) can be used in key derivation
+4. When dealing with composite files, consider which parts are used for cryptographic operations
+5. Multi-stage steganography requires methodical analysis of each layer
